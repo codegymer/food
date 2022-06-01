@@ -1,0 +1,107 @@
+
+{% extends "base.html" %}
+
+{% block main_title %}
+
+shop pro edit
+  
+{% endblock main_title %}
+
+
+{% block main_body %}
+<br>
+<div class="container text-center">
+<h1>Hello <b>{{request.user}}</b> please! update profile</h1>
+<!-- {{user}} -->   
+{% for message in messages %}
+<span class="text-danger">{{message.tags}}{{message}}</span>
+{% endfor %}
+</div>
+<form class="container" action="edit" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">shop name</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="shopname" name="shopname" value="{{shopdata.shop_name}}">
+  </div>
+
+  <div class="mb-3" style="heiht:10%; width: 20%;">
+    <label for="exampleFormControlInput1" class="form-label"></label>
+    <img src="{{shopdata.shop_pics.url}}"  class="img-fluid" id="prev" alt="dp preview">
+
+  </div>
+  
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Shop image {{shopdata.shop_pics}}</label>
+    <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="chooce image {{shopdata.shop_pics}}" name="images" onchange="pre(event)"  value="{{shopdata.shop_pics}}">
+  </div>
+  
+  
+  
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">shop holder name</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="shop-holder-name" name="shopholdername" value="{{shopdata.shop_holder_name}}">
+  </div>
+
+
+
+
+  <!-- <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Shop email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Emain@example.com" name="shopemail">
+  </div> -->
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">since</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="how old your shop" name="since" value="{{shopdata.since}}">
+  </div>
+
+
+  <!-- can_delived_online_or_not -->
+  <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">dilivery online or not ((selected:{{shopdata.can_delived_online_or_not }})) </label>
+  <select class="form-select" aria-label="Default select example" name="dilivery">
+    <option disabled selected>select mode</option>
+    <option value="True">Yes</option>
+    <option value="False">no</option>
+    <!-- <option value="3">Three</option> -->
+  </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">about</label>
+    <textarea type="tex" class="form-control" id="exampleFormControlInput1" placeholder="write about shop" name="about" value="{{shopdata.about}}" >{{shopdata.about}}</textarea>
+  </div>
+  
+  
+
+  
+  <div class="">
+    <!-- <button class="btn btn-primary" type="button">Button</button> -->
+    <button class="btn btn-primary" type="submit">submit</button>
+    <a   class="btn btn-link" href="/login">login here</a>
+    <a   class="btn btn-link" href="/">Home</a>
+
+  </div>
+</form>
+
+
+  
+
+{% block main_script %}
+
+<script type='text/javascript'>
+  function pre(event) 
+  {
+   var reader = new FileReader();
+   reader.onload = function()
+   {
+    var output = document.getElementById('prev');
+    output.src = reader.result;
+   }
+   reader.readAsDataURL(event.target.files[0]);
+  }
+  </script>
+
+{% endblock main_script %}
+
+{% endblock main_body %}

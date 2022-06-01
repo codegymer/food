@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block main_title %}
+
+{{user.username}} || profile
+  
+{% endblock main_title %}
+
+
+{% block main_body %}
+<style>
+    body {
+    background-color: #eee
+}
+
+.height-100 {
+    height: 100vh
+}
+
+
+
+.dots {
+    height: 20px;
+    width: 20px;
+    margin-top: 4px;
+    margin-left: 4px;
+    background-color: #dc3545;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 10px
+}
+
+.list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px;
+    border-top: 1px solid #eee;
+    cursor: pointer
+}
+
+.list li:hover {
+    background-color: #dc3545;
+    color: #fff
+}
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid  ">
+      <a class="navbar-brand" href="/">food shop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse flex justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="useredit">Edit</a>
+          </li>
+
+          
+
+          <li class="nav-item">
+            <a class="nav-link" href="/shop/profile">shop</a>
+          </li>
+          
+          <li class="nav-item ">
+            <a class="nav-link" href="/logouthere">log-out</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/orders">orders</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+</nav>
+
+{% for message in messages %}
+<span class="text-danger">{{message.tags}}{{message}}</span>
+{% endfor %}
+<div class="card-header text-center">
+    PROFILE
+
+</div>
+
+
+<!-- new profile section -->
+<div class="container ">
+  <div class="row p-5">
+    <div class="col-md-6 img">
+      <img src="{{user.udp.url}} " style="width: 400px; height: 200px;"  alt="" >
+    </div>
+    <div class="col-md-6 details">
+      <blockquote>
+        <h5>user name: <span>@  {{user.username}}</span></h5>
+        <small><cite title="Source Title" class="text-bold"> <strong>full name:</strong> <span>{{user.first_name}} {{user.last_name}}</span> </cite></small>
+        <br>
+        <small><cite title="Source Title" class="text-bold"> <span><strong>user ID:</strong>{{user.id}}</span> <br></span> </cite></small>
+        <br>
+
+        <small><cite title="Source Title"><span> <strong>email:</strong> {{user.email}}</span> </cite></small>
+        <br>
+        <small><cite title="Source Title"><span> <strong>Birth date:</strong> {{user.birth_date}}</span> </cite></small>
+        
+        <br>
+        <small><cite title="Source Title"><span> <strong>phone:</strong> {{user.phone_number}}</span> </cite></small>
+
+        <br>
+        <small><cite title="Source Title"><span> <strong>pincode:</strong> {{user.pincode}}</span> </cite></small>
+<br>
+        <small><cite title="Source Title"><span> <strong>state:</strong> {{user.state}}</span> </cite></small>
+
+        <br>
+        <small><cite title="Source Title"><span> <strong>address:</strong> {{user.address}}</span> </cite></small> 
+        <br>
+        <small><cite title="Source Title"><span> <strong>about:</strong> {{user.bio}}</span> </cite></small> 
+      </blockquote>
+     
+    </div>
+  </div>
+</div>
+
+
+
+  
+{% endblock main_body %}

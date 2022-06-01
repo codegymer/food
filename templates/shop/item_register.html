@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+
+{% block main_title %}
+
+post iteam
+  
+{% endblock main_title %}
+
+
+{% block main_body %}
+<br>
+<div class="container text-center">
+<h1>welcome to post item</h1>
+<!-- {{user}} -->   
+{% for message in messages %}
+<span class="text-danger">{{message.tags}}{{message}}</span>
+{% endfor %}
+</div>
+<form class="container" action="iregister" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">item name</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="item name" name="itemname">
+  </div>
+   <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">item price</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="item name" name="price">
+  </div>
+   <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">item about</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="item name" name="about">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">catagories</label>
+    <select class="form-select" aria-label="Default select example" name="catagories">
+      <option disabled selected>select catagories</option>
+      <option value="milk">milk</option>
+      <option value="fish">fish</option>
+      <option value="sweets">sweets</option>
+      <option value="fats">fats</option>
+      <option value="spices">spices</option>
+      <option value="meat">meat</option>
+      <option value="eggs">eggs</option>
+      <!-- <option value="3">Three</option> -->
+    </select>
+    </div>
+  
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">product image</label>
+    <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="chooce image" name="image">
+  </div>
+  
+  
+  <!-- {{context.value}} -->
+  
+  <div class="">
+    <!-- <button class="btn btn-primary" type="button">Button</button> -->
+    <button class="btn btn-primary" type="submit">submit</button>
+    <a   class="btn btn-link" href="/shop/profile">shop profile</a>
+    <a   class="btn btn-link" href="/">Home</a>
+
+  </div>
+</form>
+<br>
+
+  
+{% endblock main_body %}

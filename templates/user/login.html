@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+
+{% block main_title %}
+
+login
+  
+{% endblock main_title %}
+
+
+{% block main_body %}
+<br>
+<div class="container text-center">
+<h1>welcome to login</h1>
+<!-- {{user}} -->
+
+{% for message in messages %}
+<span class="text-danger">{{message}}</span>
+{% endfor %}
+</div>
+<form class="container" action="login" method="POST">
+  {% csrf_token %}
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Username</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username" name="username">
+  </div>
+ 
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password" name="password" >
+  </div>
+  
+  <div class="">
+    <!-- <button class="btn btn-primary" type="button">Button</button> -->
+    <button class="btn btn-primary" type="submit">submit</button>
+    <a   class="btn btn-link" href="/register">Register here</a>
+
+  </div>
+</form>
+  
+{% endblock main_body %}

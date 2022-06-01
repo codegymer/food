@@ -1,0 +1,80 @@
+
+{% extends "base.html" %}
+
+{% block main_title %}
+
+login
+  
+{% endblock main_title %}
+
+
+{% block main_body %}
+<br>
+<div class="container text-center">
+<h1>Hello <b>{{request.user}}</b> please! update profile</h1>
+<!-- {{user}} -->   
+{% for message in messages %}
+<span class="text-danger">{{message.tags}}{{message}}</span>
+{% endfor %}
+</div>
+<form class="container" action="useredit" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Emain@example.com" name="email" value="{{userdata.email}}">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="First Name" name="fname" value="{{userdata.first_name}}">
+  </div> 
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Last Name" name="lname" value="{{userdata.last_name}}" >
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Bio</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Your Bio" name="bio" value="{{userdata.bio}}">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Birth date</label>
+    <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Birth date " name="bday" value="{{userdata.birth_date}">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">DP</label>
+    <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Select image for dp " name="dp" >
+  </div>
+
+  <div class="mb-3">
+    <label  class="form-label">address</label>
+    <textarea type="text" class="form-control" id="exampleFormControlInput1" placeholder="give your address" name="address" >{{userdata.address }}</textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">phone </label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your phone" name="phone" value="{{userdata.phone_number}}">
+  </div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">pin code </label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your pin code" name="pin" value="{{userdata.pincode}}">
+  </div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">state </label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your state" name="state" value="{{userdata.state}}">
+  </div>
+
+
+  
+  <div class="">
+    <!-- <button class="btn btn-primary" type="button">Button</button> -->
+    <button class="btn btn-primary" type="submit">submit</button>
+    <a   class="btn btn-link" href="/login">login here</a>
+    <a   class="btn btn-link" href="/">Home</a>
+
+  </div>
+</form>
+  
+{% endblock main_body %}
