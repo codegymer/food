@@ -24,12 +24,14 @@ AUTH_USER_MODEL = 'user.User'
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-oilodhhm2^^$z-fhfbta9xk#r32(^r#&w^y+_1a5n+m$xf^jn+'
+# SECRET_KEY = 'django-insecure-oilodhhm2^^$z-fhfbta9xk#r32(^r#&w^y+_1a5n+m$xf^jn+'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["yellow-bite.herokuapp.com","localhost"]
 
 
 # Application definition
